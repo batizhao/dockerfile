@@ -12,11 +12,14 @@ This repository contains **Dockerfile** of [Ubuntu](http://www.ubuntu.com/) for 
 
 * Install [Docker](https://www.docker.com/).
 
-* Download from public [Docker Hub Registry](https://registry.hub.docker.com/): `docker pull batizhao/ubuntu`
+* you can build an image from Dockerfile
 
-> alternatively, you can build an image from Dockerfile: `docker build -t="batizhao/ubuntu:16.04" github.com/batizhao/dockerfile-ubuntu`
-
+```
+docker build -t batizhao/ubuntu .
+```
 
 ### Usage
 
-    docker run -it batizhao/ubuntu:16.04
+```
+docker run -p 2200:22 -it batizhao/ubuntu
+```
