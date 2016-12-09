@@ -8,11 +8,10 @@ services:
         MYSQL_ROOT_HOST: "%"
       expose:
         - "3306"
-      # ports:
-      #   - "3306:3306"
 
   weba:
-      build: ./web
+      image: batizhao/java:8
+      command: java -jar opt/paper.jar
       volumes:
         - ./web/paper-0.0.1-SNAPSHOT.jar:/opt/paper.jar
       depends_on:
@@ -28,7 +27,8 @@ services:
         - SPRING_DATASOURCE_SQL-SCRIPT-ENCODING=UTF-8
 
   webb:
-      build: ./web
+      image: batizhao/java:8
+      command: java -jar opt/paper.jar
       volumes:
         - ./web/paper-0.0.1-SNAPSHOT.jar:/opt/paper.jar
       depends_on:
