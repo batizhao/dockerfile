@@ -1,0 +1,67 @@
+version: '2'
+
+services:
+
+  elasticsearch:
+    build: elasticsearch/
+    hostname: elasticsearch
+    container_name: elasticsearch
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - /tmp/elasticsearch/data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elk
+
+  # logstash:
+  #   build: logstash/
+  #   hostname: logstash
+  #   container_name: logstash
+  #   volumes:
+  #     - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+  #     - ./logstash/pipeline:/usr/share/logstash/pipeline
+  #   ports:
+  #     - "5044:5044"
+  #   environment:
+  #     LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+  #   networks:
+  #     - elk
+  #   depends_on:
+  #     - elasticsearch
+
+  kibana:
+    build: kibana/
+    hostname: kibana
+    container_name: kibana
+    volumes:
+      - ./kibana/config/:/usr/share/kibana/config
+    ports:
+      - "5601:5601"
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+  filebeat:
+    build: filebeat/
+    hostname: filebeat
+    container_name: filebeat
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./filebeat/config/filebeat.yml:/filebeat.yml
+      # - /tmp/filebeat/registry:/data/registry
+      - /Users/batizhao/logs:/Users/batizhao/logs
+
+networks:
+
+  elk:
+    driver: bridge
