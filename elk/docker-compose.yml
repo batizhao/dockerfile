@@ -17,21 +17,21 @@ services:
     networks:
       - elk
 
-  # logstash:
-  #   build: logstash/
-  #   hostname: logstash
-  #   container_name: logstash
-  #   volumes:
-  #     - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
-  #     - ./logstash/pipeline:/usr/share/logstash/pipeline
-  #   ports:
-  #     - "5044:5044"
-  #   environment:
-  #     LS_JAVA_OPTS: "-Xmx256m -Xms256m"
-  #   networks:
-  #     - elk
-  #   depends_on:
-  #     - elasticsearch
+  logstash:
+    build: logstash/
+    hostname: logstash
+    container_name: logstash
+    volumes:
+      - ./logstash/config:/usr/share/logstash/config
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
+    ports:
+      - "5044:5044"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
 
   kibana:
     build: kibana/
@@ -55,7 +55,7 @@ services:
     networks:
       - elk
     depends_on:
-      - elasticsearch
+      - logstash
     volumes:
       - ./filebeat/config/filebeat.yml:/filebeat.yml
       # - /tmp/filebeat/registry:/data/registry

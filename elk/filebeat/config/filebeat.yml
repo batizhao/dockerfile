@@ -10,9 +10,8 @@ filebeat.prospectors:
 # Multiple outputs may be used.
 
 #-------------------------- Elasticsearch output ------------------------------
-output.elasticsearch:
-  # Array of hosts to connect to.
-  hosts: ["elasticsearch:9200"]
+# output.elasticsearch:
+  # hosts: ["elasticsearch:9200"]
 
   # Optional protocol and basic auth credentials.
   #protocol: "https"
@@ -20,9 +19,8 @@ output.elasticsearch:
   #password: "changeme"
 
 #----------------------------- Logstash output --------------------------------
-#output.logstash:
-  # The Logstash hosts
-  #hosts: ["localhost:5044"]
+output.logstash:
+  hosts: ["logstash:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
