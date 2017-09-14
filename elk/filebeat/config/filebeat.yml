@@ -2,7 +2,8 @@ filebeat.prospectors:
 
 - input_type: log
   paths:
-    - /Users/batizhao/logs/*.log
+    - /opt/logs/*.log
+  document_type: iwamp-dev-log4j
 
 #================================ Outputs =====================================
 
