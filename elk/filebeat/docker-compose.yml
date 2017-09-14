@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+
+  filebeat:
+    build: ./
+    hostname: filebeat
+    container_name: filebeat
+    volumes:
+      - ./config/filebeat.yml:/filebeat.yml
+      # - /tmp/filebeat/registry:/data/registry
+      - /opt/logs/iwamp-snapshot:/opt/logs/iwamp-snapshot
+      - /var/log:/opt/logs/docker

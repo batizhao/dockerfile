@@ -2,8 +2,13 @@ filebeat.prospectors:
 
 - input_type: log
   paths:
-    - /opt/logs/*.log
-  document_type: iwamp-dev-log4j
+    - /opt/logs/iwamp-snapshot/*.log
+  document_type: iwamp9002
+
+- input_type: log
+  paths:
+    - /opt/logs/docker/messages
+  document_type: docker9002
 
 #================================ Outputs =====================================
 
@@ -21,7 +26,7 @@ filebeat.prospectors:
 
 #----------------------------- Logstash output --------------------------------
 output.logstash:
-  hosts: ["logstash:5044"]
+  hosts: ["172.21.0.1:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications

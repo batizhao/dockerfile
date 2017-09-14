@@ -13,7 +13,7 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms1024m"
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - elk
 
@@ -27,7 +27,7 @@ services:
     ports:
       - "5044:5044"
     environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms1024m"
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - elk
     depends_on:
@@ -47,19 +47,6 @@ services:
       - elk
     depends_on:
       - elasticsearch
-
-  filebeat:
-    build: filebeat/
-    hostname: filebeat
-    container_name: filebeat
-    networks:
-      - elk
-    depends_on:
-      - logstash
-    volumes:
-      - ./filebeat/config/filebeat.yml:/filebeat.yml
-      # - /tmp/filebeat/registry:/data/registry
-      - /Users/batizhao/logs:/Users/batizhao/logs
 
 networks:
 
