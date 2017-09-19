@@ -9,5 +9,4 @@ services:
     volumes:
       - ./config/filebeat.yml:/filebeat.yml
       # - /tmp/filebeat/registry:/data/registry
-      - /opt/logs/iwamp-snapshot:/opt/logs/iwamp-snapshot
-      - /var/log:/opt/logs/docker
+      # - /Users/batizhao/logs:/opt/logs/tomcat
