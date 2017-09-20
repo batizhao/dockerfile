@@ -8,7 +8,7 @@ services:
     container_name: elasticsearch
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - /usr/share/elasticsearch/data
+      - esdata1:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -48,7 +48,10 @@ services:
     depends_on:
       - elasticsearch
 
-networks:
+volumes:
+  esdata1:
+    driver: local
 
+networks:
   elk:
     driver: bridge
