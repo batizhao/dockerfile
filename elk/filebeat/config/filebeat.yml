@@ -1,18 +1,19 @@
 filebeat.prospectors:
 
-# - input_type: log
-#   paths:
-#     - /opt/logs/tomcat/*.log
-#   document_type: iwamp9002
+- input_type: log
+  paths:
+    - /opt/logs/iwamp-snapshot/*.log
+  document_type: iwamp9002
 
 - input_type: log
   paths:
-    - /var/log/messages
-  # multiline:
-  #   pattern: ‘^\[‘
-  #   negate:  true
-  #   match:   after
-  document_type: docker9002
+    - /opt/logs/briseis-snapshot/*.log
+  document_type: briseis9005
+
+- input_type: log
+  paths:
+    - /opt/logs/docker/messages
+  document_type: docker225
 
 #================================ Outputs =====================================
 
@@ -30,7 +31,7 @@ filebeat.prospectors:
 
 #----------------------------- Logstash output --------------------------------
 output.logstash:
-  hosts: ["172.21.0.1:5044"]
+  hosts: ["172.18.0.1:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
