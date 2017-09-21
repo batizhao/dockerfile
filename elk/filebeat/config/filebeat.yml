@@ -1,18 +1,9 @@
 filebeat.prospectors:
 
-# - input_type: log
-#   paths:
-#     - /opt/logs/tomcat/*.log
-#   document_type: iwamp9002
-
 - input_type: log
   paths:
-    - /var/log/messages
-  # multiline:
-  #   pattern: ‘^\[‘
-  #   negate:  true
-  #   match:   after
-  document_type: docker9002
+    - /var/log/*.log
+  exclude_files: ['proxy-vsockd.log','acpid.log']
 
 #================================ Outputs =====================================
 

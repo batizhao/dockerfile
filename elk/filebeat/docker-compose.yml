@@ -7,6 +7,5 @@ services:
     hostname: filebeat
     container_name: filebeat
     volumes:
-      - ./config/filebeat.yml:/filebeat.yml
-      # - /tmp/filebeat/registry:/data/registry
-      # - /Users/batizhao/logs:/opt/logs/tomcat
+      - ./config/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - /var/log:/var/log:ro

@@ -8,7 +8,7 @@ services:
     container_name: elasticsearch
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - /usr/share/elasticsearch/data:rw
+      - esdata1:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -16,6 +16,18 @@ services:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - elk
+  # elasticsearch2:
+  #   build: elasticsearch/
+  #   hostname: elasticsearch2
+  #   container_name: elasticsearch2
+  #   volumes:
+  #     - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+  #     - esdata2:/usr/share/elasticsearch/data
+  #   environment:
+  #     - "ES_JAVA_OPTS=-Xmx256m -Xms256m"
+  #     - "discovery.zen.ping.unicast.hosts=elasticsearch"
+  #   networks:
+  #     - elk
 
   logstash:
     build: logstash/
@@ -48,7 +60,12 @@ services:
     depends_on:
       - elasticsearch
 
-networks:
+volumes:
+  esdata1:
+    driver: local
+  # esdata2:
+  #   driver: local
 
+networks:
   elk:
     driver: bridge
