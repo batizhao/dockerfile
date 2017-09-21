@@ -21,23 +21,23 @@ services:
     mem_limit: 1g
     networks:
       - elk
-  elasticsearch2:
-    build: elasticsearch/
-    hostname: elasticsearch2
-    container_name: elasticsearch2
-    volumes:
-      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - esdata2:/usr/share/elasticsearch/data
-    environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - "discovery.zen.ping.unicast.hosts=elasticsearch"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    mem_limit: 1g
-    networks:
-      - elk
+  # elasticsearch2:
+  #   build: elasticsearch/
+  #   hostname: elasticsearch2
+  #   container_name: elasticsearch2
+  #   volumes:
+  #     - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+  #     - esdata2:/usr/share/elasticsearch/data
+  #   environment:
+  #     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  #     - "discovery.zen.ping.unicast.hosts=elasticsearch"
+  #   ulimits:
+  #     memlock:
+  #       soft: -1
+  #       hard: -1
+  #   mem_limit: 1g
+  #   networks:
+  #     - elk
 
   logstash:
     build: logstash/
@@ -73,8 +73,8 @@ services:
 volumes:
   esdata1:
     driver: local
-  esdata2:
-    driver: local
+  # esdata2:
+  #   driver: local
 
 networks:
   elk:
