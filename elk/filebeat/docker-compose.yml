@@ -7,7 +7,6 @@ services:
     hostname: filebeat
     container_name: filebeat
     volumes:
-      - ./config/filebeat.yml:/filebeat.yml
-      # - /tmp/filebeat/registry:/data/registry
+      - ./config/filebeat.yml:/usr/share/filebeat/filebeat.yml
       - /opt/logs:/opt/logs
       - /var/log:/opt/logs/docker
