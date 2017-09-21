@@ -2,7 +2,7 @@ version: '2'
 
 services:
 
-  elasticsearch1:
+  elasticsearch:
     build: elasticsearch/
     hostname: elasticsearch
     container_name: elasticsearch
