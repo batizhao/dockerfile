@@ -6,6 +6,8 @@ services:
     build: ./
     hostname: filebeat
     container_name: filebeat
+    # environment:
+    #   - "TZ=Asia/Shanghai"
     volumes:
       - ./config/filebeat.yml:/usr/share/filebeat/filebeat.yml
       - /var/log:/var/log:ro
