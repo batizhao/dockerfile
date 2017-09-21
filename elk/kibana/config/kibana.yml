@@ -20,6 +20,6 @@ elasticsearch.url: http://elasticsearch:9200
 # xpack.reporting.enabled: false
 
 # xpack.monitoring.ui.container.elasticsearch.enabled: true
-xpack.monitoring.elasticsearch.url: http://elasticsearch:9200
-xpack.monitoring.elasticsearch.username: "kibana"
-xpack.monitoring.elasticsearch.password: "changeme"
+# xpack.monitoring.elasticsearch.url: http://elasticsearch:9200
+# xpack.monitoring.elasticsearch.username: "kibana"
+# xpack.monitoring.elasticsearch.password: "changeme"
