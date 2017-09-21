@@ -14,6 +14,7 @@ services:
       - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      TZ: Asia/Shanghai
     networks:
       - elk
   # elasticsearch2:
@@ -40,6 +41,7 @@ services:
       - "5044:5044"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+      TZ: Asia/Shanghai
     networks:
       - elk
     depends_on:
@@ -55,6 +57,7 @@ services:
       - "5601:5601"
     environment:
       ELASTICSEARCH_URL: http://elasticsearch:9200
+      TZ: Asia/Shanghai
     networks:
       - elk
     depends_on:
