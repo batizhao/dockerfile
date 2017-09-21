@@ -13,7 +13,8 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      ES_JAVA_OPTS: -Xms1024m -Xmx1024m
+      TZ: Asia/Shanghai
     ulimits:
       memlock:
         soft: -1
@@ -49,7 +50,8 @@ services:
     ports:
       - "5044:5044"
     environment:
-      LS_JAVA_OPTS: "-Xmx1024m -Xms1024m"
+      LS_JAVA_OPTS: -Xmx1024m -Xms1024m
+      TZ: Asia/Shanghai
     networks:
       - elk
     depends_on:
@@ -65,6 +67,7 @@ services:
       - "5601:5601"
     environment:
       ELASTICSEARCH_URL: http://elasticsearch:9200
+      TZ: Asia/Shanghai
     networks:
       - elk
     depends_on:
