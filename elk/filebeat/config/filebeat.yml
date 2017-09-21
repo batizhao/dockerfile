@@ -10,11 +10,6 @@ filebeat.prospectors:
     - /opt/logs/briseis-snapshot/*.log
   document_type: briseis9005
 
-- input_type: log
-  paths:
-    - /opt/logs/docker/messages
-  document_type: docker225
-
 #================================ Outputs =====================================
 
 # Configure what outputs to use when sending the data collected by the beat.
