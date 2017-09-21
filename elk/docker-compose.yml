@@ -2,7 +2,7 @@ version: '2'
 
 services:
 
-  elasticsearch:
+  elasticsearch1:
     build: elasticsearch/
     hostname: elasticsearch
     container_name: elasticsearch
@@ -13,7 +13,32 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx1024m -Xms1024m"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 1g
+    networks:
+      - elk
+  elasticsearch2:
+    build: elasticsearch/
+    hostname: elasticsearch2
+    container_name: elasticsearch2
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - esdata2:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.zen.ping.unicast.hosts=elasticsearch"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 1g
     networks:
       - elk
 
@@ -50,6 +75,8 @@ services:
 
 volumes:
   esdata1:
+    driver: local
+  esdata2:
     driver: local
 
 networks:
