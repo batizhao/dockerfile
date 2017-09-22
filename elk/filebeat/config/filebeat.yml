@@ -7,6 +7,9 @@ filebeat.prospectors:
     host: "9002"
     tags: ["iwamp"]
   fields_under_root: true
+  multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
+  multiline.negate: true
+  multiline.match: after
   # exclude_files: ['proxy-vsockd.log','acpid.log']
 
 #================================ Outputs =====================================
