@@ -7,6 +7,10 @@ filebeat.prospectors:
     host: "9002"
     tags: ["iwamp"]
   fields_under_root: true
+  multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
+  multiline.negate: true
+  multiline.match: after
+
 
 - input_type: log
   paths:
@@ -15,6 +19,9 @@ filebeat.prospectors:
     host: "9005"
     tags: ["briseis"]
   fields_under_root: true
+  multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
+  multiline.negate: true
+  multiline.match: after
 
 #================================ Outputs =====================================
 
