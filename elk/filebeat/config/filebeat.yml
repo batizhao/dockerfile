@@ -3,12 +3,18 @@ filebeat.prospectors:
 - input_type: log
   paths:
     - /opt/logs/iwamp-snapshot/*.log
-  document_type: iwamp9002
+  fields:
+    host: "9002"
+    tags: ["iwamp"]
+  fields_under_root: true
 
 - input_type: log
   paths:
     - /opt/logs/briseis-snapshot/*.log
-  document_type: briseis9005
+  fields:
+    host: "9005"
+    tags: ["briseis"]
+  fields_under_root: true
 
 #================================ Outputs =====================================
 
