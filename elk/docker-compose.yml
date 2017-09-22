@@ -50,7 +50,7 @@ services:
     ports:
       - "5044:5044"
     environment:
-      LS_JAVA_OPTS: -Xms1024m -Xms1024m
+      LS_JAVA_OPTS: -Xms256m -Xms256m
       TZ: Asia/Shanghai
     networks:
       - elk
