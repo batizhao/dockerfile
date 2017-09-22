@@ -3,7 +3,11 @@ filebeat.prospectors:
 - input_type: log
   paths:
     - /opt/log/*.log
-  exclude_files: ['proxy-vsockd.log','acpid.log']
+  fields:
+    host: "9002"
+    tags: ["iwamp"]
+  fields_under_root: true
+  # exclude_files: ['proxy-vsockd.log','acpid.log']
 
 #================================ Outputs =====================================
 

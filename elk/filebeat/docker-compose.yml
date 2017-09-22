@@ -10,4 +10,4 @@ services:
       - "TZ=Asia/Shanghai"
     volumes:
       - ./config/filebeat.yml:/usr/share/filebeat/filebeat.yml
-      - /var/log:/opt/log
+      - /Users/batizhao/logs:/opt/log
