@@ -11,6 +11,27 @@ filebeat.prospectors:
   multiline.negate: true
   multiline.match: after
 
+- input_type: log
+  paths:
+    - /opt/logs/iwamp-prod/*.log
+  fields:
+    host: "9003"
+    tags: ["iwamp"]
+  fields_under_root: true
+  multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
+  multiline.negate: true
+  multiline.match: after
+
+- input_type: log
+  paths:
+    - /opt/logs/iwamp-ci/*.log
+  fields:
+    host: "9004"
+    tags: ["iwamp"]
+  fields_under_root: true
+  multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
+  multiline.negate: true
+  multiline.match: after
 
 - input_type: log
   paths:
@@ -23,6 +44,16 @@ filebeat.prospectors:
   multiline.negate: true
   multiline.match: after
 
+- input_type: log
+  paths:
+    - /opt/logs/iwamp-new-engine-ci/*.log
+  fields:
+    host: "9007"
+    tags: ["newengine"]
+  fields_under_root: true
+  multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
+  multiline.negate: true
+  multiline.match: after
 #================================ Outputs =====================================
 
 # Configure what outputs to use when sending the data collected by the beat.
