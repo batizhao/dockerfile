@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  eureka:
+      image: batizhao/java:8
+      hostname: discovery
+      container_name: discovery
+      command: java -jar /opt/poseidon-discovery-0.0.1-SNAPSHOT.jar
+      volumes:
+        - /Users/batizhao/Documents/oschina/poseidon/poseidon-discovery/target/:/opt
+      expose:
+        - "8761"
+      ports:
+        - "8761:8761"
+      environment:
+        TZ: Asia/Shanghai
+      networks:
+        - poseidon
+
+  zuul:
+      image: batizhao/java:8
+      hostname: gateway
+      container_name: gateway
+      command: java -jar /opt/poseidon-gateway-0.0.1-SNAPSHOT.jar
+      volumes:
+        - /Users/batizhao/Documents/oschina/poseidon/poseidon-gateway/target/:/opt
+      expose:
+        - "8050"
+      ports:
+        - "8050:8050"
+      environment:
+        TZ: Asia/Shanghai
+      networks:
+        - poseidon
+      depends_on:
+        - eureka
+
+networks:
+  poseidon:
+    driver: bridge
