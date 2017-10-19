@@ -2,7 +2,7 @@ version: '2'
 
 services:
   eureka:
-      image: batizhao/java:8
+      image: openjdk/8
       hostname: discovery
       container_name: discovery
       command: java -jar /opt/poseidon-discovery-0.0.1-SNAPSHOT.jar
@@ -18,7 +18,7 @@ services:
         - poseidon
 
   zuul:
-      image: batizhao/java:8
+      image: openjdk/8
       hostname: gateway
       container_name: gateway
       command: java -jar /opt/poseidon-gateway-0.0.1-SNAPSHOT.jar
