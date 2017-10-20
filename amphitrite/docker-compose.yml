@@ -5,7 +5,7 @@ services:
     image: batizhao/java:8
     hostname: engine
     container_name: engine
-    command: java -jar /opt/amphitrite-engine-0.0.1-SNAPSHOT.jar
+    command: java -Dfile.encoding=utf-8 -jar /opt/amphitrite-engine-0.0.1-SNAPSHOT.jar
     volumes:
       - /opt/web/amphitrite/engine:/opt
     expose:
@@ -21,7 +21,7 @@ services:
     image: batizhao/java:8
     hostname: user
     container_name: user
-    command: java -jar /opt/amphitrite-user-0.0.1-SNAPSHOT.jar
+    command: java -Dfile.encoding=utf-8 -jar /opt/amphitrite-user-0.0.1-SNAPSHOT.jar
     volumes:
       - /opt/web/amphitrite/user:/opt
     expose:
