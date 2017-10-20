@@ -1,21 +1,21 @@
 version: '2'
 
 services:
-  # engine:
-  #   image: batizhao/java:8
-  #   hostname: engine
-  #   container_name: engine
-  #   command: java -jar /opt/amphitrite-engine-0.0.1-SNAPSHOT.jar
-  #   volumes:
-  #     - /Users/batizhao/Documents/oschina/amphitrite/amphitrite-engine/target/:/opt
-  #   expose:
-  #     - "8000"
-  #   ports:
-  #     - "8000:8000"
-  #   environment:
-  #     TZ: Asia/Shanghai
-  #   networks:
-  #     - amphitrite
+  engine:
+    image: batizhao/java:8
+    hostname: engine
+    container_name: engine
+    command: java -jar /opt/amphitrite-engine-0.0.1-SNAPSHOT.jar
+    volumes:
+      - /opt/web/amphitrite/engine:/opt
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+    environment:
+      TZ: Asia/Shanghai
+    networks:
+      - poseidon
 
   user:
     image: batizhao/java:8
