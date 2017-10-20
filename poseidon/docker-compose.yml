@@ -37,4 +37,4 @@ services:
 
 networks:
   poseidon:
-    driver: bridge
+    external: true
