@@ -23,7 +23,7 @@ services:
     container_name: user
     command: java -jar /opt/amphitrite-user-0.0.1-SNAPSHOT.jar
     volumes:
-      - /Users/batizhao/Documents/oschina/amphitrite/amphitrite-user/target/:/opt
+      - /opt/web/amphitrite/user:/opt
     expose:
       - "8001"
     ports:
