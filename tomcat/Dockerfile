@@ -10,7 +10,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Define commonly used JAVA_HOME variable
-ENV TOMCAT_VERSION 8.5.8
+ENV TOMCAT_VERSION 8.5.23
 
 # Get Tomcat
 RUN wget --no-cookies http://ftp.jaist.ac.jp/pub/apache/tomcat/tomcat-8/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
