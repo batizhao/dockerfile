@@ -54,6 +54,17 @@ filebeat.prospectors:
   multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
   multiline.negate: true
   multiline.match: after
+
+- input_type: log
+  paths:
+    - /opt/logs/taikang-snapshot/*.log
+  fields:
+    host: "9008"
+    tags: ["taikang"]
+  fields_under_root: true
+  multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
+  multiline.negate: true
+  multiline.match: after
 #================================ Outputs =====================================
 
 # Configure what outputs to use when sending the data collected by the beat.
