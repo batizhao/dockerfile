@@ -19,8 +19,8 @@ services:
 
   user:
     image: batizhao/openjdk:8
-    hostname: user
-    container_name: user
+    hostname: ims
+    container_name: ims
     command: java -Dfile.encoding=utf-8 -jar /opt/amphitrite-ims-0.0.1-SNAPSHOT.jar
     volumes:
       - /opt/web/amphitrite/ims:/opt
