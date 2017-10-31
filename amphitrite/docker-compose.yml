@@ -21,9 +21,9 @@ services:
     image: batizhao/openjdk:8
     hostname: user
     container_name: user
-    command: java -Dfile.encoding=utf-8 -jar /opt/amphitrite-user-0.0.1-SNAPSHOT.jar
+    command: java -Dfile.encoding=utf-8 -jar /opt/amphitrite-ims-0.0.1-SNAPSHOT.jar
     volumes:
-      - /opt/web/amphitrite/user:/opt
+      - /opt/web/amphitrite/ims:/opt
     expose:
       - "8001"
     ports:
