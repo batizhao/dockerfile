@@ -81,7 +81,7 @@ filebeat.prospectors:
 
 #----------------------------- Logstash output --------------------------------
 output.logstash:
-  hosts: ["172.18.0.1:5044"]
+  hosts: ["172.31.21.147:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
