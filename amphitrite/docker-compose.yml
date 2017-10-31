@@ -2,7 +2,7 @@ version: '2'
 
 services:
   engine:
-    image: batizhao/java:8
+    image: batizhao/openjdk:8
     hostname: engine
     container_name: engine
     command: java -Dfile.encoding=utf-8 -jar /opt/amphitrite-engine-0.0.1-SNAPSHOT.jar
@@ -18,7 +18,7 @@ services:
       - poseidon
 
   user:
-    image: batizhao/java:8
+    image: batizhao/openjdk:8
     hostname: user
     container_name: user
     command: java -Dfile.encoding=utf-8 -jar /opt/amphitrite-user-0.0.1-SNAPSHOT.jar
