@@ -6,6 +6,7 @@ services:
     hostname: discovery
     container_name: discovery
     command: java -jar /opt/poseidon-discovery-0.0.1-SNAPSHOT.jar
+    restart: always
     volumes:
       - /opt/web/poseidon/discovery:/opt
     expose:
@@ -22,6 +23,7 @@ services:
     hostname: gateway
     container_name: gateway
     command: java -jar /opt/poseidon-gateway-0.0.1-SNAPSHOT.jar
+    restart: always
     volumes:
       - /opt/web/poseidon/gateway:/opt
     expose:
@@ -40,6 +42,7 @@ services:
     hostname: uaa
     container_name: uaa
     command: java -jar /opt/poseidon-uaa-0.0.1-SNAPSHOT.jar
+    restart: always
     volumes:
       - /opt/web/poseidon/uaa:/opt
     expose:

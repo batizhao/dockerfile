@@ -6,6 +6,7 @@ services:
     hostname: engine
     container_name: engine
     command: java -Dfile.encoding=utf-8 -jar /opt/amphitrite-engine-0.0.1-SNAPSHOT.jar
+    restart: always
     volumes:
       - /opt/web/amphitrite/engine:/opt
     expose:
@@ -17,11 +18,12 @@ services:
     networks:
       - poseidon
 
-  user:
+  ims:
     image: batizhao/openjdk:8
     hostname: ims
     container_name: ims
     command: java -Dfile.encoding=utf-8 -jar /opt/amphitrite-ims-0.0.1-SNAPSHOT.jar
+    restart: always
     volumes:
       - /opt/web/amphitrite/ims:/opt
     expose:
