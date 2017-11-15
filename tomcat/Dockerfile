@@ -1,4 +1,4 @@
-FROM batizhao/java:8
+FROM batizhao/openjdk:8
 
 # 创建者信息
 MAINTAINER batizhao <zhaobati@gmail.com>
