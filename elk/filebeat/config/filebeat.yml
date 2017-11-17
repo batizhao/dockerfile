@@ -65,6 +65,16 @@ filebeat.prospectors:
   multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
   multiline.negate: true
   multiline.match: after
+
+filebeat.modules:
+
+- module: nginx
+  access:
+    enabled: true
+    var.paths: ["/opt/logs/vue-demo/nginx/access.log*"]
+  error:
+    enabled: true
+    var.paths: ["/opt/logs/vue-demo/nginx/error.log*"]
 #================================ Outputs =====================================
 
 # Configure what outputs to use when sending the data collected by the beat.
