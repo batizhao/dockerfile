@@ -1,4 +1,3 @@
 FROM kibana:6.0.0
 
-# Add your kibana plugins setup here
-# Example: RUN kibana-plugin install <name|url>
+RUN kibana-plugin remove x-pack
