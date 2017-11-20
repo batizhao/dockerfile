@@ -18,7 +18,6 @@ xpack.ml.enabled: false
 xpack.monitoring.enabled: false
 xpack.reporting.enabled: false
 xpack.security.enabled: false
-xpack.watcher.enabled: false
 
 # xpack.monitoring.elasticsearch.url: http://elasticsearch:9200
 # xpack.monitoring.elasticsearch.username: "kibana"
