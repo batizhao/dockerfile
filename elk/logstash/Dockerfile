@@ -1,3 +1,3 @@
-FROM docker.elastic.co/logstash/logstash:5.6.1
+FROM logstash:6.0.0
 
 # RUN logstash-plugin install logstash-codec-multiline
