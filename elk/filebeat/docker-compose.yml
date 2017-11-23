@@ -6,6 +6,7 @@ services:
     build: ./
     hostname: filebeat
     container_name: filebeat
+    restart: always
     environment:
       - "TZ=Asia/Shanghai"
     volumes:

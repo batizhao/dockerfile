@@ -1,3 +1,3 @@
-FROM docker.elastic.co/beats/filebeat:5.6.1
+FROM filebeat:6.0.0
 
-# RUN echo "Asia/Shanghai" > /etc/localtime
+USER root

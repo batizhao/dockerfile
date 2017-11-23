@@ -2,7 +2,7 @@ filebeat.prospectors:
 
 - input_type: log
   paths:
-    - /opt/log/*.log
+    - /opt/logs/iwamp-snapshot/*.log
   fields:
     host: "9002"
     tags: ["iwamp"]
@@ -10,7 +10,61 @@ filebeat.prospectors:
   multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
   multiline.negate: true
   multiline.match: after
-  # exclude_files: ['proxy-vsockd.log','acpid.log']
+
+- input_type: log
+  paths:
+    - /opt/logs/iwamp-prod/*.log
+  fields:
+    host: "9003"
+    tags: ["iwamp"]
+  fields_under_root: true
+  multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
+  multiline.negate: true
+  multiline.match: after
+
+- input_type: log
+  paths:
+    - /opt/logs/iwamp-ci/*.log
+  fields:
+    host: "9004"
+    tags: ["iwamp"]
+  fields_under_root: true
+  multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
+  multiline.negate: true
+  multiline.match: after
+
+- input_type: log
+  paths:
+    - /opt/logs/briseis-snapshot/*.log
+  fields:
+    host: "9005"
+    tags: ["briseis"]
+  fields_under_root: true
+  multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
+  multiline.negate: true
+  multiline.match: after
+
+- input_type: log
+  paths:
+    - /opt/logs/iwamp-new-engine-ci/*.log
+  fields:
+    host: "9007"
+    tags: ["newengine"]
+  fields_under_root: true
+  multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
+  multiline.negate: true
+  multiline.match: after
+
+- input_type: log
+  paths:
+    - /opt/logs/taikang-snapshot/*.log
+  fields:
+    host: "9008"
+    tags: ["taikang"]
+  fields_under_root: true
+  multiline.pattern: '^\[[0-9]{2}:[0-9]{2}:[0-9]{2}:[0-9]{3}'
+  multiline.negate: true
+  multiline.match: after
 
 #================================ Outputs =====================================
 
@@ -28,7 +82,7 @@ filebeat.prospectors:
 
 #----------------------------- Logstash output --------------------------------
 output.logstash:
-  hosts: ["172.21.0.1:5044"]
+  hosts: ["172.31.21.147:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications

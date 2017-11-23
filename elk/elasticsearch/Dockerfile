@@ -1,3 +1,3 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:5.6.1
+FROM elasticsearch:6.0.0
 
-# RUN elasticsearch-plugin install analysis-icu
+# RUN elasticsearch-plugin remove x-pack

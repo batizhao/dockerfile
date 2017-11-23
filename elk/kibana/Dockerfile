@@ -1,3 +1,3 @@
-FROM docker.elastic.co/kibana/kibana:5.6.1
+FROM kibana:6.0.0
 
-# RUN kibana-plugin install <name|url>
+# RUN kibana-plugin remove x-pack
