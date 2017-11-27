@@ -7,6 +7,7 @@ KUBE_VERSION=v1.7.5
 KUBE_PAUSE_VERSION=3.0
 ETCD_VERSION=3.0.17
 DNS_VERSION=1.14.4
+FLANNEL=v0.9.1-amd64
 
 GCR_URL=gcr.io/google_containers
 ALIYUN_URL=registry.cn-hangzhou.aliyuncs.com/batizhao
@@ -24,6 +25,10 @@ k8s-dns-dnsmasq-nanny-amd64:${DNS_VERSION})
 
 for imageName in ${images[@]} ; do
   docker pull $ALIYUN_URL/$imageName
-  docker tag $ALIYUN_URL/$imageName $GCR_URL/$imageName 
+  docker tag $ALIYUN_URL/$imageName $GCR_URL/$imageName
   docker rmi $ALIYUN_URL/$imageName
 done
+
+docker pull $ALIYUN_URL/flannel:v0.9.1-amd64
+docker tag $ALIYUN_URL/flannel:v0.9.1-amd64 quay.io/coreos/flannel:v0.9.1-amd64
+docker rmi $ALIYUN_URL/flannel:v0.9.1-amd64
