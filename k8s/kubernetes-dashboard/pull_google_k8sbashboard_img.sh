@@ -3,13 +3,12 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-KUBE_DASHBOARD_VERSION=v1.7.1
+KUBE_DASHBOARD_VERSION=v1.8.0
 
 GCR_URL=gcr.io/google_containers
 ALIYUN_URL=registry.cn-hangzhou.aliyuncs.com/batizhao
 
-images=(kubernetes-dashboard-amd64:${KUBE_DASHBOARD_VERSION}
-kubernetes-dashboard-init-amd64:v1.0.0)
+images=(kubernetes-dashboard-amd64:${KUBE_DASHBOARD_VERSION})
 
 for imageName in ${images[@]} ; do
   docker pull $ALIYUN_URL/$imageName
