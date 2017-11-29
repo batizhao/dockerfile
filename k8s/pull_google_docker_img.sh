@@ -6,7 +6,7 @@ set -o pipefail
 KUBE_VERSION=v1.8.4
 KUBE_PAUSE_VERSION=3.0
 ETCD_VERSION=3.0.17
-DNS_VERSION=1.14.4
+DNS_VERSION=1.14.5
 FLANNEL=v0.9.1-amd64
 
 GCR_URL=gcr.io/google_containers
