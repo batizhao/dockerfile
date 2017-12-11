@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   labels:
-    app: jenkins
+    name: jenkins
   name: jenkins
 spec:
   type: NodePort
@@ -15,4 +15,4 @@ spec:
     targetPort: 50000
     name: agent
   selector:
-    app: jenkins
+    name: jenkins

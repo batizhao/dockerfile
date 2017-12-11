@@ -1,4 +1,4 @@
-FROM batizhao/ubuntu
+FROM 172.31.21.226/ideal/ubuntu
 
 # 创建者信息
 MAINTAINER batizhao <zhaobati@gmail.com>

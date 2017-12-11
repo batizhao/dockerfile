@@ -1,4 +1,4 @@
-FROM batizhao/openjdk:8
+FROM 172.31.21.226/ideal/openjdk:8
 
 # 创建者信息
 MAINTAINER batizhao <zhaobati@gmail.com>
@@ -10,10 +10,10 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Define commonly used JAVA_HOME variable
-ENV TOMCAT_VERSION 8.5.23
+ENV TOMCAT_VERSION 8.5.24
 
 # Get Tomcat
-RUN wget --no-cookies http://ftp.jaist.ac.jp/pub/apache/tomcat/tomcat-8/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
+RUN wget --no-cookies http://download.nextag.com/apache/tomcat/tomcat-8/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
     tar xzvf /tmp/tomcat.tgz -C /opt && \
     mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat && \
     rm /tmp/tomcat.tgz && \

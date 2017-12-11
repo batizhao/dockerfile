@@ -12,8 +12,9 @@ spec:
   template:
     metadata:
       labels:
-        app: jenkins
+        name: jenkins
     spec:
+      serviceAccountName: jenkins
       imagePullSecrets:
       - name: harbor
       containers:
