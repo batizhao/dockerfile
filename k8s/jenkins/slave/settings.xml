@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <servers>
+        <server>
+            <id>maven-releases</id>
+            <username>idealone</username>
+            <password>passw0rd</password>
+        </server>
+        <server>
+            <id>maven-snapshots</id>
+            <username>idealone</username>
+            <password>passw0rd</password>
+        </server>
+        <server>
+            <id>maven-central</id>
+            <username>idealone</username>
+            <password>passw0rd</password>
+        </server>
+    </servers>
+
+    <mirrors>
+        <mirror>
+            <id>mirrorId</id>
+            <name>Nexus Ideal Softone</name>
+            <mirrorOf>*</mirrorOf>
+            <url>http://172.31.21.196:8081/repository/maven-public/</url>
+        </mirror>
+    </mirrors>
+
+    <profiles>
+        <profile>
+            <id>development</id>
+            <repositories>
+                <repository>
+                    <id>maven-central</id>
+                    <url>http://172.31.21.196:8081/repository/maven-central/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>maven-releases</id>
+                    <url>http://172.31.21.196:8081/repository/maven-releases/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>maven-snapshots</id>
+                    <url>http://172.31.21.196:8081/repository/maven-snapshots/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>warn</checksumPolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>development</activeProfile>
+    </activeProfiles>
+</settings>

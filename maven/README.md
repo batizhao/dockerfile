@@ -41,3 +41,16 @@ podTemplate(label: 'maven', containers: [
   }
 }
 ```
+
+```
+podTemplate(label: 'jnlp-slave')
+{
+  node('jnlp-slave') {
+    stage('Build a Maven project') {
+      git branch: 'master', credentialsId: 'e242d1e1-58b5-4645-a84e-64f957e32016', url: 'https://gitee.com/idealsoftone/poseidon.git'
+      sh 'sleep 120'
+      sh 'mvn -B clean package'
+    }
+  }
+}
+```
