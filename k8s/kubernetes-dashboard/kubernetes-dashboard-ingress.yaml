@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  # annotations:
+  #   ingress.kubernetes.io/ssl-passthrough: "true"
+  #   kubernetes.io/ingress.allow-http: "false"
+  name:  kubernetes-dashboard-ingress
+  namespace: kube-system
+spec:
+  tls:
+  - hosts:
+    - idealsoftone.com
+    secretName: softone-ingress-secret
+  rules:
+  - host: idealsoftone.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kubernetes-dashboard
+          servicePort: 443
