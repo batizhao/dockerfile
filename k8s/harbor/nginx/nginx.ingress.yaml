@@ -1,13 +1,13 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: jenkins-web
+  name: harbor-web
 spec:
   rules:
-  - host: jenkins.idealsoftone.com
+  - host: hub.idealsoftone.com
     http:
       paths:
       - path: /
         backend:
-          serviceName: jenkins
-          servicePort: 8080
+          serviceName: nginx
+          servicePort: 80
