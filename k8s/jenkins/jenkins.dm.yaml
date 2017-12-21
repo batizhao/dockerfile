@@ -17,10 +17,12 @@ spec:
       serviceAccountName: jenkins
       imagePullSecrets:
       - name: harbor
+      nodeSelector:
+        jenkins: master
       containers:
       - name: jenkins
         image: 172.31.21.226/ideal/jenkins:lts
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
           name: web
