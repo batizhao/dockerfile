@@ -10,11 +10,6 @@ MAVEN_VERSION=3.5.2-jdk-8
 
 HUB_URL=172.31.21.226/ideal
 
-images=(
-openjdk:${OPENJDK_VERSION}
-
-maven:${MAVEN_VERSION})
-
 cd ubuntu
 docker build -t $HUB_URL/ubuntu:${UBUNTU_VERSION} .
 docker push $HUB_URL/ubuntu:${UBUNTU_VERSION}
