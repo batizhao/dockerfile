@@ -9,7 +9,7 @@ metadata:
     k8s-app: kibana
 spec:
   rules:
-  - host: kibana.idealsoftone.com
+  - host: kibana.isoftone.com
     http:
       paths:
       - path: /

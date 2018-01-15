@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
 spec:
   rules:
-  - host: es.idealsoftone.com
+  - host: es.isoftone.com
     http:
       paths:
       - path: /

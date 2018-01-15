@@ -4,7 +4,7 @@ metadata:
   name: jenkins-web
 spec:
   rules:
-  - host: jenkins.idealsoftone.com
+  - host: jenkins.isoftone.com
     http:
       paths:
       - path: /
