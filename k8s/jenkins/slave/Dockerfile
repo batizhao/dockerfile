@@ -10,9 +10,12 @@ RUN echo '' > /etc/apt/sources.list.d/jessie-backports.list \
   && echo "deb http://mirrors.aliyun.com/debian jessie-updates main contrib non-free" >> /etc/apt/sources.list \
   && echo "deb http://mirrors.aliyun.com/debian-security jessie/updates main contrib non-free" >> /etc/apt/sources.list
 
+# nodejs
+RUN curl -sL https://deb.nodesource.com/setup_8.x
+
 # fix error while loading shared libraries: libltdl.so.7
 RUN apt-get update && \
-    apt-get install -y libltdl7 && \
+    apt-get install -y libltdl7 nodejs && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
