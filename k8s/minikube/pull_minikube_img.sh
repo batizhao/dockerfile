@@ -3,6 +3,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+KUBE_PAUSE_VERSION=3.0
 DNS_VERSION=1.14.5
 DEFAULTBACKEND_VERSION=1.4
 
@@ -12,7 +13,8 @@ STORAGE_PROVISIONER_VERSION=storage-provisioner:v1.8.1
 GCR_URL=gcr.io/google_containers
 ALIYUN_URL=registry.cn-hangzhou.aliyuncs.com/batizhao
 
-images=(kubernetes-dashboard-amd64:v1.8.0
+images=(pause-amd64:${KUBE_PAUSE_VERSION}
+kubernetes-dashboard-amd64:v1.8.0
 defaultbackend:${DEFAULTBACKEND_VERSION}
 k8s-dns-sidecar-amd64:${DNS_VERSION}
 k8s-dns-kube-dns-amd64:${DNS_VERSION}
@@ -36,3 +38,7 @@ docker rmi $ALIYUN_URL/$STORAGE_PROVISIONER_VERSION
 docker pull registry.cn-hangzhou.aliyuncs.com/batizhao/nginx-ingress-controller:0.9.0-beta.17
 docker tag registry.cn-hangzhou.aliyuncs.com/batizhao/nginx-ingress-controller:0.9.0-beta.17 quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.9.0-beta.17
 docker rmi registry.cn-hangzhou.aliyuncs.com/batizhao/nginx-ingress-controller:0.9.0-beta.17
+
+docker pull registry.cn-hangzhou.aliyuncs.com/batizhao/defaultbackend:1.4
+docker tag registry.cn-hangzhou.aliyuncs.com/batizhao/defaultbackend:1.4 gcr.io/google_containers/defaultbackend:1.4
+docker rmi registry.cn-hangzhou.aliyuncs.com/batizhao/defaultbackend:1.4
