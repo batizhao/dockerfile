@@ -10,14 +10,19 @@ RUN echo '' > /etc/apt/sources.list.d/jessie-backports.list \
   && echo "deb http://mirrors.aliyun.com/debian jessie-updates main contrib non-free" >> /etc/apt/sources.list \
   && echo "deb http://mirrors.aliyun.com/debian-security jessie/updates main contrib non-free" >> /etc/apt/sources.list
 
-# nodejs
-RUN curl -sL https://deb.nodesource.com/setup_8.x
-
 # fix error while loading shared libraries: libltdl.so.7
 RUN apt-get update && \
-    apt-get install -y libltdl7 nodejs && \
+    apt-get install -y libltdl7 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Install nodejs
+ENV NODE_VERSION 8.9.4
+
+RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
+  && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
+  && rm "node-v$NODE_VERSION-linux-x64.tar.xz" \
+  && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
 # Install Maven
 ARG MAVEN_VERSION=3.5.2
