@@ -9,7 +9,8 @@ spec:
   capacity:
     storage: 50Gi
   accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: /data/elasticsearch
+    - ReadWriteMany
+  glusterfs:
+    endpoints: "glusterfs-cluster"
+    path: "k8s-volume"
+    readOnly: false
