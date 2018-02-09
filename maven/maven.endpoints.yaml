@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: glusterfs-cluster
+  labels:
+    type: maven
+subsets:
+- addresses:
+  - ip: 172.31.21.208
+  ports:
+  - port: 1
+- addresses:
+  - ip: 172.31.21.209
+  ports:
+  - port: 1
+- addresses:
+  - ip: 172.31.21.210
+  ports:
+  - port: 1
+- addresses:
+  - ip: 172.31.21.211
+  ports:
+  - port: 1
