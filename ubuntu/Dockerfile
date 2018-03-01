@@ -13,13 +13,13 @@ RUN echo $TZ > /etc/timezone && \
     rm /etc/localtime && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata && \
-    locale-gen en_US.UTF-8 && \
+    locale-gen zh_CN.UTF-8 && \
     apt-get clean
 
 # 设置编码
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:UTF-8
-ENV LC_ALL en_US.UTF-8
+ENV LANG zh_CN.UTF-8
+ENV LANGUAGE zh_CN.UTF-8
+ENV LC_ALL zh_CN.UTF-8
 
 # 执行以下命令
 CMD ["bash"]
