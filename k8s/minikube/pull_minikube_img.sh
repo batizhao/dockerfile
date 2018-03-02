@@ -10,11 +10,10 @@ DEFAULTBACKEND_VERSION=1.4
 ADDON_MANAGER_VERSION=kube-addon-manager:v6.5
 STORAGE_PROVISIONER_VERSION=storage-provisioner:v1.8.1
 
-GCR_URL=gcr.io/google_containers
+GCR_URL=k8s.gcr.io
 ALIYUN_URL=registry.cn-hangzhou.aliyuncs.com/batizhao
 
-images=(pause-amd64:${KUBE_PAUSE_VERSION}
-kubernetes-dashboard-amd64:v1.8.0
+images=(kubernetes-dashboard-amd64:v1.8.1
 defaultbackend:${DEFAULTBACKEND_VERSION}
 k8s-dns-sidecar-amd64:${DNS_VERSION}
 k8s-dns-kube-dns-amd64:${DNS_VERSION}
@@ -26,6 +25,10 @@ for imageName in ${images[@]} ; do
   docker tag $ALIYUN_URL/$imageName $GCR_URL/$imageName
   docker rmi $ALIYUN_URL/$imageName
 done
+
+docker pull $ALIYUN_URL/$ADDON_MANAGER_VERSION
+docker tag $ALIYUN_URL/$ADDON_MANAGER_VERSION gcr.io/google_containers/pause-amd64:${KUBE_PAUSE_VERSION}
+docker rmi $ALIYUN_URL/$ADDON_MANAGER_VERSION
 
 docker pull $ALIYUN_URL/$ADDON_MANAGER_VERSION
 docker tag $ALIYUN_URL/$ADDON_MANAGER_VERSION gcr.io/google-containers/$ADDON_MANAGER_VERSION
