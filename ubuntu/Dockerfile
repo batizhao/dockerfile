@@ -18,8 +18,8 @@ RUN echo $TZ > /etc/timezone && \
 
 # 设置编码
 ENV LANG zh_CN.UTF-8
-ENV LANGUAGE zh_CN.UTF-8
-ENV LC_ALL zh_CN.UTF-8
+# ENV LANGUAGE zh_CN.UTF-8
+# ENV LC_ALL zh_CN.UTF-8
 
 # 执行以下命令
 CMD ["bash"]

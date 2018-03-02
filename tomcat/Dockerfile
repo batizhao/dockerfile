@@ -1,25 +1,25 @@
-FROM 172.31.21.226/ideal/openjdk:8
+FROM 172.31.21.226/ideal/alpine-openjdk:8
 
 # 创建者信息
 MAINTAINER batizhao <zhaobati@gmail.com>
 
-# Install dependencies
-RUN apt-get update && \
-    apt-get install -y wget tar && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
 # Define commonly used JAVA_HOME variable
 ENV TOMCAT_VERSION 8.5.28
 
-# Get Tomcat
-RUN wget --no-cookies http://download.nextag.com/apache/tomcat/tomcat-8/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
+RUN set -ex && \
+    apk -U upgrade && \
+    apk add curl && \
+    mkdir -p /opt && \
+    curl -o /tmp/tomcat.tgz \
+      http://download.nextag.com/apache/tomcat/tomcat-8/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
     tar xzvf /tmp/tomcat.tgz -C /opt && \
     mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat && \
     rm /tmp/tomcat.tgz && \
     rm -rf /opt/tomcat/webapps/examples && \
     rm -rf /opt/tomcat/webapps/docs && \
-    rm -rf /opt/tomcat/webapps/ROOT
+    rm -rf /opt/tomcat/webapps/ROOT && \
+    rm -rf /tmp/* /var/cache/apk/* && \
+    apk del curl
 
 # Add admin/admin user
 ADD tomcat-users.xml /opt/tomcat/conf/
