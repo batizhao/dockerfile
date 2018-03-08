@@ -11,3 +11,6 @@ spec:
   resources:
     requests:
       storage: 50Gi
+  selector:
+    matchLabels:
+      k8s-app: elk-esdata

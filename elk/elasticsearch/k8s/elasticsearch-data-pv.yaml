@@ -11,6 +11,6 @@ spec:
   accessModes:
     - ReadWriteMany
   glusterfs:
-    endpoints: "glusterfs-cluster"
-    path: "k8s-volume"
+    endpoints: "elk-esdata"
+    path: "k8s-elk-volume"
     readOnly: false
