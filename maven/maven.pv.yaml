@@ -8,8 +8,13 @@ spec:
   capacity:
     storage: 50Gi
   accessModes:
-    - ReadWriteMany
-  glusterfs:
-    endpoints: "glusterfs-cluster"
-    path: "k8s-volume"
-    readOnly: false
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /data/maven
+
+  #   - ReadWriteMany
+  # glusterfs:
+  #   endpoints: "glusterfs-cluster"
+  #   path: "k8s-volume"
+  #   readOnly: false
