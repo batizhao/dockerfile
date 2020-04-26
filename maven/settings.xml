@@ -5,38 +5,49 @@
 
     <servers>
         <server>
-            <id>maven-releases</id>
-            <username>idealone</username>
-            <password>passw0rd</password>
+            <id>upi-maven-releases</id>
+            <username>hg-dev-team</username>
+            <password>1234@com</password>
         </server>
         <server>
-            <id>maven-snapshots</id>
-            <username>idealone</username>
-            <password>passw0rd</password>
+            <id>upi-maven-snapshots</id>
+            <username>hg-dev-team</username>
+            <password>1234@com</password>
         </server>
         <server>
-            <id>maven-central</id>
-            <username>idealone</username>
-            <password>passw0rd</password>
+            <id>upi-maven-central</id>
+            <username>admin</username>
+            <password>admin123</password>
+        </server>
+        <server>
+            <id>upi-maven-public</id>
+            <username>hg-dev-team</username>
+            <password>1234@com</password>
         </server>
     </servers>
 
     <mirrors>
-        <mirror>
-            <id>mirrorId</id>
-            <name>Nexus Ideal Softone</name>
-            <mirrorOf>*</mirrorOf>
-            <url>http://172.31.21.196:8081/repository/maven-public/</url>
-        </mirror>
+      <mirror>
+          <id>nexus-aliyun</id>
+          <name>Nexus aliyun</name>
+          <mirrorOf>central</mirrorOf>
+          <url>https://maven.aliyun.com/repository/public</url>
+      </mirror>
+      <!-- <mirror>
+          <id>mirrorId</id>
+          <name>Nexus Ideal Softone</name>
+          <mirrorOf>*,!central</mirrorOf>
+          <url>http://172.19.12.226/nexus/repository/upi-maven-public/</url>
+      </mirror> -->
     </mirrors>
 
-    <profiles>
+    <!-- <profiles>
         <profile>
             <id>development</id>
             <repositories>
                 <repository>
                     <id>maven-central</id>
-                    <url>http://172.31.21.196:8081/repository/maven-central/</url>
+                    <url>http://180.101.144.155:8081/repository/maven-central/</url>
                     <releases>
                         <enabled>true</enabled>
                     </releases>
@@ -48,7 +59,7 @@
                 </repository>
                 <repository>
                     <id>maven-releases</id>
-                    <url>http://172.31.21.196:8081/repository/maven-releases/</url>
+                    <url>http://180.101.144.155:8081/repository/maven-releases/</url>
                     <releases>
                         <enabled>true</enabled>
                     </releases>
@@ -58,7 +69,7 @@
                 </repository>
                 <repository>
                     <id>maven-snapshots</id>
-                    <url>http://172.31.21.196:8081/repository/maven-snapshots/</url>
+                    <url>http://180.101.144.155:8081/repository/maven-snapshots/</url>
                     <releases>
                         <enabled>false</enabled>
                     </releases>
@@ -73,5 +84,5 @@
     </profiles>
     <activeProfiles>
         <activeProfile>development</activeProfile>
-    </activeProfiles>
+    </activeProfiles> -->
 </settings>

@@ -1,6 +1,6 @@
-FROM 172.31.21.226/ideal/alpine
+FROM batizhao/alpine
 
-MAINTAINER batizhao <zhaobati@gmail.com>
+LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
 RUN set -ex && \
     apk -U upgrade && \

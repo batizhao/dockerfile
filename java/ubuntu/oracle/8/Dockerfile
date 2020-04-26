@@ -1,7 +1,7 @@
-FROM 172.31.21.226/ideal/ubuntu
+FROM batizhao/ubuntu
 
 # 创建者信息
-MAINTAINER batizhao <zhaobati@gmail.com>
+LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
 # Install dependencies
 RUN apt-get update && \

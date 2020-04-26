@@ -21,7 +21,7 @@ spec:
         jenkins: master
       containers:
       - name: jenkins
-        image: 172.31.21.226/ideal/jenkins:lts
+        image: batizhao/jenkins:lts
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

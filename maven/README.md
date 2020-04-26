@@ -8,13 +8,13 @@
 * you can build an image from Dockerfile
 
 ```
-docker build -t 172.31.21.226/ideal/maven:3.5.2-jdk-8 .
+docker build -t batizhao/maven:3.5.2-jdk-8 .
 ```
 
 ### Push to harbor
 
 ```
-docker push 172.31.21.226/ideal/maven:3.5.2-jdk-8
+docker push batizhao/maven:3.5.2-jdk-8
 ```
 
 ### Deploy on k8s
@@ -26,7 +26,7 @@ kubectl apply -f ./
 ### Jenkins pipeline
 ```
 podTemplate(label: 'maven', containers: [
-  containerTemplate(name: 'maven', image: '172.31.21.226/ideal/maven:3.5.2-jdk-8', alwaysPullImage: true, ttyEnabled: true, command: 'cat')
+  containerTemplate(name: 'maven', image: 'batizhao/maven:3.5.2-jdk-8', alwaysPullImage: true, ttyEnabled: true, command: 'cat')
   ], volumes: [
   persistentVolumeClaim(mountPath: '/root/.m2/repository', claimName: 'maven-pvc', readOnly: false)
   ])

@@ -1,13 +1,13 @@
-FROM 172.31.21.226/ideal/alpine-openjdk:8
+FROM batizhao/alpine-openjdk:8
 
 # 创建者信息
-MAINTAINER batizhao <zhaobati@gmail.com>
+LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
 USER root
 
-ARG MAVEN_VERSION=3.5.2
+ARG MAVEN_VERSION=3.6.3
 ARG USER_HOME_DIR="/root"
-ARG BASE_URL=http://download.nextag.com/apache/maven/maven-3/${MAVEN_VERSION}/binaries
+ARG BASE_URL=https://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/${MAVEN_VERSION}/binaries
 
 RUN set -ex && \
     apk -U upgrade && \

@@ -1,7 +1,6 @@
 FROM alpine
 
-MAINTAINER batizhao <zhaobati@gmail.com>
-# thanks to Anastas Dancha <anapsix@random.io>
+LABEL maintainer="batizhao <zhaobati@gmail.com>" 
 
 RUN set -ex && \
     apk -U upgrade && \

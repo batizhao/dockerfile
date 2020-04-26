@@ -10,13 +10,13 @@
 * you can build an image from Dockerfile
 
 ```
-docker build -t 172.31.21.226/ideal/jenkins:lts .
+docker build -t batizhao/jenkins:lts .
 ```
 
 ### Push to harbor
 
 ```
-docker push 172.31.21.226/ideal/jenkins:lts
+docker push batizhao/jenkins:lts
 ```
 
 ### Deploy on k8s

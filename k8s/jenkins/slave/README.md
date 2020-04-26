@@ -8,11 +8,11 @@
 * you can build an image from Dockerfile
 
 ```
-docker build -t 172.31.21.226/ideal/jnlp-slave:latest .
+docker build -t batizhao/jnlp-slave:latest .
 ```
 
 ### Push to harbor
 
 ```
-docker push 172.31.21.226/ideal/jnlp-slave:latest
+docker push batizhao/jnlp-slave:latest
 ```

@@ -1,6 +1,6 @@
 FROM alpine
 
-MAINTAINER batizhao <zhaobati@gmail.com>
+LABEL maintainer="batizhao <zhaobati@gmail.com>"
 # thanks to Anastas Dancha <anapsix@random.io>
 
 # Java Version and other ENV

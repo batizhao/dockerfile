@@ -1,4 +1,4 @@
-FROM gcr.io/tensorflow/tensorflow-full
+FROM b.gcr.io/tensorflow/tensorflow-full
 
 # 创建者信息
-MAINTAINER batizhao <zhaobati@gmail.com>
+LABEL maintainer="batizhao <zhaobati@gmail.com>"

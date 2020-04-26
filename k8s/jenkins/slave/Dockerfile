@@ -1,6 +1,6 @@
 FROM jenkins/jnlp-slave
 
-MAINTAINER batizhao <zhaobati@gmail.com>
+LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
 USER root
 

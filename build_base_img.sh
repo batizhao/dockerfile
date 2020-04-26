@@ -6,10 +6,11 @@ set -o pipefail
 ALPINE_VERSION=latest
 OPENJDK_VERSION=8
 #ORACLE_JDK_VERSION=8
-TOMCAT_VERSION=8
-MAVEN_VERSION=3.5.2-jdk-8
+TOMCAT_VERSION=9
+MAVEN_VERSION=latest
 
-HUB_URL=172.31.21.226/ideal
+# HUB_URL=172.31.21.226/ideal
+HUB_URL=batizhao
 
 cd alpine
 docker build -t $HUB_URL/alpine:${ALPINE_VERSION} .
