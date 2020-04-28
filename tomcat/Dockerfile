@@ -14,6 +14,10 @@ RUN set -ex && \
       https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
     tar xzvf /tmp/tomcat.tgz -C /opt && \
     mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat && \
+    sed -i '/Valve/s/^/<!--/g' /opt/tomcat/webapps/manager/META-INF/context.xml && \
+    sed -i '/Valve/s/$/-->/g' /opt/tomcat/webapps/manager/META-INF/context.xml && \
+    sed -i '/allow/s/^/<!--/g' /opt/tomcat/webapps/manager/META-INF/context.xml && \
+    sed -i '/allow/s/$/-->/g' /opt/tomcat/webapps/manager/META-INF/context.xml && \
     rm /tmp/tomcat.tgz && \
     rm -rf /opt/tomcat/webapps/examples && \
     rm -rf /opt/tomcat/webapps/docs && \
@@ -25,10 +29,10 @@ RUN set -ex && \
 ADD tomcat-users.xml /opt/tomcat/conf/
 
 # 注释 manage 的 ip 限制
-RUN sed -i '/Valve/s/^/<!--/g' /opt/tomcat/webapps/manager/META-INF/context.xml
-RUN sed -i '/Valve/s/$/-->/g' /opt/tomcat/webapps/manager/META-INF/context.xml
-RUN sed -i '/allow/s/^/<!--/g' /opt/tomcat/webapps/manager/META-INF/context.xml
-RUN sed -i '/allow/s/$/-->/g' /opt/tomcat/webapps/manager/META-INF/context.xml
+# RUN sed -i '/Valve/s/^/<!--/g' /opt/tomcat/webapps/manager/META-INF/context.xml
+# RUN sed -i '/Valve/s/$/-->/g' /opt/tomcat/webapps/manager/META-INF/context.xml
+# RUN sed -i '/allow/s/^/<!--/g' /opt/tomcat/webapps/manager/META-INF/context.xml
+# RUN sed -i '/allow/s/$/-->/g' /opt/tomcat/webapps/manager/META-INF/context.xml
 
 ENV CATALINA_HOME /opt/tomcat
 ENV PATH $PATH:$CATALINA_HOME/bin

@@ -1,7 +1,7 @@
 version: '2'
 services:
   mysql:
-      image: batizhao/mysql
+      image: mysql
       environment:
         MYSQL_ROOT_PASSWORD: password
         MYSQL_DATABASE: paper
@@ -10,7 +10,7 @@ services:
         - "3306"
 
   weba:
-      image: batizhao/openjdk:8
+      image: batizhao/alpine-openjdk:8
       command: java -jar opt/paper.jar
       volumes:
         - ./web/paper-0.0.1-SNAPSHOT.jar:/opt/paper.jar
@@ -21,13 +21,13 @@ services:
       expose:
         - "8080"
       environment:
-        - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/paper?useUnicode=true&useSSL=false
+        - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/paper?useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
         - SPRING_DATASOURCE_USERNAME=root
         - SPRING_DATASOURCE_PASSWORD=password
         - SPRING_DATASOURCE_SQL-SCRIPT-ENCODING=UTF-8
 
   webb:
-      image: batizhao/openjdk:8
+      image: batizhao/alpine-openjdk:8
       command: java -jar opt/paper.jar
       volumes:
         - ./web/paper-0.0.1-SNAPSHOT.jar:/opt/paper.jar
@@ -38,7 +38,7 @@ services:
       expose:
         - "8080"
       environment:
-        - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/paper?useUnicode=true&useSSL=false
+        - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/paper?useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
         - SPRING_DATASOURCE_USERNAME=root
         - SPRING_DATASOURCE_PASSWORD=password
         - SPRING_DATASOURCE_SQL-SCRIPT-ENCODING=UTF-8
