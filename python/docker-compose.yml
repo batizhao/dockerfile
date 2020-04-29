@@ -2,8 +2,15 @@ version: '3'
 services:
   web:
     image: batizhao/stackdemo
-    build: .
     ports:
       - "8000:8000"
+    deploy:
+      mode: replicated
+      replicas: 3
+      placement:
+        constraints: [node.role == worker]
   redis:
     image: redis:alpine
+    deploy:
+      placement:
+        constraints: [node.role == worker]
