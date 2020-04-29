@@ -28,14 +28,8 @@ RUN set -ex && \
 # Add admin/admin user
 ADD tomcat-users.xml /opt/tomcat/conf/
 
-# 注释 manage 的 ip 限制
-# RUN sed -i '/Valve/s/^/<!--/g' /opt/tomcat/webapps/manager/META-INF/context.xml
-# RUN sed -i '/Valve/s/$/-->/g' /opt/tomcat/webapps/manager/META-INF/context.xml
-# RUN sed -i '/allow/s/^/<!--/g' /opt/tomcat/webapps/manager/META-INF/context.xml
-# RUN sed -i '/allow/s/$/-->/g' /opt/tomcat/webapps/manager/META-INF/context.xml
-
-ENV CATALINA_HOME /opt/tomcat
-ENV PATH $PATH:$CATALINA_HOME/bin
+ENV CATALINA_HOME /opt/tomcat \
+    PATH $PATH:$CATALINA_HOME/bin
 
 EXPOSE 8080
 WORKDIR /opt/tomcat
