@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    image: batizhao/stackdemo
+    build: .
+    ports:
+      - "8000:8000"
+  redis:
+    image: redis:alpine
