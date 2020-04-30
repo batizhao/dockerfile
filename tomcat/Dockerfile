@@ -28,8 +28,8 @@ RUN set -ex && \
 # Add admin/admin user
 ADD tomcat-users.xml /opt/tomcat/conf/
 
-ENV CATALINA_HOME /opt/tomcat \
-    PATH $PATH:$CATALINA_HOME/bin
+ENV CATALINA_HOME /opt/tomcat
+ENV PATH $PATH:$CATALINA_HOME/bin
 
 EXPOSE 8080
 WORKDIR /opt/tomcat
