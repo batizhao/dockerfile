@@ -9,8 +9,8 @@ OPENJDK_VERSION=8
 TOMCAT_VERSION=9
 MAVEN_VERSION=latest
 
-# HUB_URL=172.31.21.226/ideal
-HUB_URL=batizhao
+HUB_URL=harbor.pecado.com/ideal
+# HUB_URL=batizhao
 
 cd alpine
 docker build -t $HUB_URL/alpine:${ALPINE_VERSION} .
