@@ -1,33 +1,26 @@
-FROM alpine
+FROM harbor.pecado.com/ideal/alpine
 
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 # thanks to Anastas Dancha <anapsix@random.io>
 
 # Java Version and other ENV
 ENV JAVA_VERSION_MAJOR=8 \
-    JAVA_VERSION_MINOR=162 \
+    JAVA_VERSION_MINOR=261 \
     JAVA_VERSION_BUILD=12 \
     JAVA_PACKAGE=jdk \
     JAVA_JCE=standard \
     JAVA_HOME=/opt/jdk \
     PATH=${PATH}:/opt/jdk/bin \
     GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc \
-    GLIBC_VERSION=2.27-r0 \
-    TZ='Asia/Shanghai' \
-    LANG=zh_CN.UTF-8
+    GLIBC_VERSION=2.31-r0
 
-# COPY glibc-2.27-r0.apk /tmp/glibc-2.27-r0.apk
-# COPY glibc-bin-2.27-r0.apk /tmp/glibc-bin-2.27-r0.apk
-# COPY glibc-i18n-2.27-r0.apk /tmp/glibc-i18n-2.27-r0.apk
-# COPY jdk-8u162-linux-x64.tar.gz /tmp/java.tar.gz
+COPY java.tar.gz /tmp/java.tar.gz
 
 # do all in one step
 RUN set -ex && \
     [[ ${JAVA_VERSION_MAJOR} != 7 ]] || ( echo >&2 'Oracle no longer publishes JAVA7 packages' && exit 1 ) && \
     apk -U upgrade && \
-    apk add libstdc++ curl ca-certificates bash tzdata && \
-    cp /usr/share/zoneinfo/$TZ /etc/localtime && \
-    echo $TZ > /etc/timezone && \
+    apk add libstdc++ curl ca-certificates bash && \
     date && \
     for pkg in glibc-${GLIBC_VERSION} glibc-bin-${GLIBC_VERSION} glibc-i18n-${GLIBC_VERSION}; do curl -SL ${GLIBC_REPO}/releases/download/${GLIBC_VERSION}/${pkg}.apk -o /tmp/${pkg}.apk; done && \
     apk add --allow-untrusted /tmp/*.apk && \
@@ -35,12 +28,6 @@ RUN set -ex && \
     ( /usr/glibc-compat/bin/localedef -i zh_CN -f UTF-8 zh_CN.UTF-8 || true ) && \
     echo "export LANG=zh_CN.UTF-8" > /etc/profile.d/locale.sh && \
     /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib && \
-    mkdir /opt && \
-    curl -jkSLH "Cookie: oraclelicense=accept-securebackup-cookie" -o /tmp/java.tar.gz \
-      http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/0da788060d494f5095bf8624735fa2f1/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz && \
-    JAVA_PACKAGE_SHA256=$(curl -SL https://www.oracle.com/webfolder/s/digest/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}checksum.html | grep -E "${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64\.tar\.gz" | grep -Eo '(sha256: )[^<]+' | cut -d: -f2 | xargs) && \
-    echo "${JAVA_PACKAGE_SHA256}  /tmp/java.tar.gz" > /tmp/java.tar.gz.sha256 && \
-    sha256sum -c /tmp/java.tar.gz.sha256 && \
     gunzip /tmp/java.tar.gz && \
     tar -C /opt -xf /tmp/java.tar && \
     ln -s /opt/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk && \
@@ -85,5 +72,8 @@ RUN set -ex && \
            /opt/jdk/jre/lib/plugin.jar \
            /tmp/* /var/cache/apk/* && \
     echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
+
+ENV JAVA_HOME /opt/jdk
+ENV PATH ${PATH}:${JAVA_HOME}/bin
 
 # EOF

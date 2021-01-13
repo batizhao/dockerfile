@@ -1,4 +1,4 @@
-FROM batizhao/alpine-openjdk:8
+FROM harbor.pecado.com/ideal/alpine-openjdk:8
 
 # 创建者信息
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
