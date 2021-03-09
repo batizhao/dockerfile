@@ -1,4 +1,4 @@
-FROM harbor.pecado.com/ideal/alpine
+FROM harbor.pecado.com:8888/ideal/alpine
 
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 # thanks to Anastas Dancha <anapsix@random.io>

@@ -9,7 +9,7 @@ ORACLE_JDK_VERSION=8
 TOMCAT_VERSION=9-jdk8
 MAVEN_VERSION=latest
 
-HUB_URL=harbor.pecado.com/ideal
+HUB_URL=harbor.pecado.com:8888/ideal
 # HUB_URL=batizhao
 
 cd alpine

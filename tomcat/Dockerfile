@@ -1,10 +1,10 @@
-FROM harbor.pecado.com/ideal/alpine-jdk:8
+FROM harbor.pecado.com:8888/ideal/alpine-openjdk:8
 
 # 创建者信息
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
 # Define commonly used JAVA_HOME variable
-ENV TOMCAT_VERSION 9.0.37
+ENV TOMCAT_VERSION 9.0.43
 
 RUN set -ex && \
     apk -U upgrade && \
