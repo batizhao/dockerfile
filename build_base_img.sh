@@ -16,7 +16,7 @@ cd alpine
 docker build -t $HUB_URL/alpine:${ALPINE_VERSION} .
 docker push $HUB_URL/alpine:${ALPINE_VERSION}
 
-cd ../java/alpine/openjdk/${OPENJDK_VERSION}
+cd ../java/alpine/openjdk
 docker build -t $HUB_URL/alpine-openjdk:${OPENJDK_VERSION} .
 docker push $HUB_URL/alpine-openjdk:${OPENJDK_VERSION}
 

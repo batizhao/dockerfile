@@ -2,7 +2,8 @@ FROM harbor.pecado.com:8888/ideal/alpine
 
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
-ARG ARTHAS_VERSION="3.4.6"
+ARG ARTHAS_VERSION="3.5.3"
+ARG JDK_VERSION="11"
 ARG MIRROR=false
 
 ENV MAVEN_HOST=https://repo1.maven.org/maven2 \
@@ -10,7 +11,7 @@ ENV MAVEN_HOST=https://repo1.maven.org/maven2 \
 
 RUN set -ex && \
     apk -U upgrade && \
-    apk add openjdk11 && \
+    apk add --update openjdk${JDK_VERSION} ttf-dejavu fontconfig && \
     if $MIRROR; then MAVEN_HOST=${MIRROR_MAVEN_HOST} ; fi && \
     # download & install arthas
     wget -qO /tmp/arthas.zip "${MAVEN_HOST}/com/taobao/arthas/arthas-packaging/${ARTHAS_VERSION}/arthas-packaging-${ARTHAS_VERSION}-bin.zip" && \
