@@ -1,11 +1,11 @@
-FROM harbor.pecado.com:8888/ideal/alpine-openjdk:8
+FROM 172.31.10.85:5000/library/alpine-openjdk:11
 
 # 创建者信息
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
 USER root
 
-ARG MAVEN_VERSION=3.6.3
+ARG MAVEN_VERSION=3.9.1
 ARG USER_HOME_DIR="/root"
 ARG BASE_URL=https://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/${MAVEN_VERSION}/binaries
 

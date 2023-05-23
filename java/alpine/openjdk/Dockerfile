@@ -1,8 +1,8 @@
-FROM harbor.pecado.com:8888/ideal/alpine
+FROM 172.31.10.85:5000/library/alpine
 
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
-ARG ARTHAS_VERSION="3.5.3"
+ARG ARTHAS_VERSION="3.6.7"
 ARG JDK_VERSION="11"
 ARG MIRROR=false
 
