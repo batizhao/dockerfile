@@ -6,6 +6,8 @@ RUN yum install -y java-11-openjdk && \
     yum clean all && \
     rm -rf /var/cache/yum
 
+COPY --from=hengyunabc/arthas:latest /opt/arthas /opt/arthas    
+
 CMD ["java","-version"]
 
 # EOF

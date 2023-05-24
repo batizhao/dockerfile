@@ -3,10 +3,9 @@ FROM ubuntu
 # 创建者信息
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
-# 使用阿里云镜像
-RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
-
-RUN apt-get update && apt-get install -y tzdata locales && \
+RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
+    sed -i s@/security.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
+    apt-get update && apt-get install -y tzdata locales && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo 'Asia/Shanghai' > /etc/timezone && \
     dpkg-reconfigure -f noninteractive tzdata && \
