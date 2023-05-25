@@ -2,14 +2,19 @@ FROM debian
 
 LABEL maintainer="batizhao <zhaobati@gmail.com>" 
 
-#定义时区参数
-ENV TZ=Asia/Shanghai \
-    DEBIAN_FRONTEND=noninteractive
+# sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+RUN apt-get update && apt-get install -y tzdata locales && \
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo 'Asia/Shanghai' > /etc/timezone && \
+    dpkg-reconfigure -f noninteractive tzdata && \
+    locale-gen zh_CN.UTF-8 && \
+    apt-get --purge -y remove tzdata locales &&\
+    apt-get clean
 
-RUN sed -i 's/deb.debian.org/mirrors.163.com/g' /etc/apt/sources.list \
-    && ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime \
-    && echo ${TZ} > /etc/timezone \
-    && dpkg-reconfigure --frontend noninteractive tzdata \
-    && rm -rf /var/lib/apt/lists/*
+# 设置时区\编码
+ENV LANG=zh_CN.UTF-8 \
+    LANGUAGE=zh_CN.UTF-8 \
+    LC_CTYPE=zh_CN.UTF-8 \
+    LC_ALL=zh_CN.UTF-8
 
 # EOF

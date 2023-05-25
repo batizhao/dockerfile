@@ -4,7 +4,8 @@ FROM 172.31.10.85:5000/library/ubuntu
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
 # Install openjdk
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends openjdk-11-jdk && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+    && apt-get -y install --no-install-recommends openjdk-11-jdk \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && java -version
