@@ -9,3 +9,5 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && java -version
+
+COPY --from=hengyunabc/arthas:latest /opt/arthas /opt/arthas

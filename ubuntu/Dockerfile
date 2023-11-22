@@ -2,20 +2,14 @@ FROM ubuntu
 
 # 创建者信息
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
-
-# sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
-# sed -i s@/security.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
     
-RUN apt-get update && apt-get install -y tzdata locales && \
-    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    echo 'Asia/Shanghai' > /etc/timezone && \
-    dpkg-reconfigure -f noninteractive tzdata && \
-    locale-gen zh_CN.UTF-8 && \
-    apt-get --purge -y remove tzdata locales &&\
-    apt-get clean
+RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
+    sed -i s@/security.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
+    apt-get update && apt-get install -y inetutils-ping language-pack-zh-hans-base language-pack-zh-hans && \
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone && \
+    dpkg-reconfigure -f noninteractive locales && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# 设置时区\编码
 ENV LANG=zh_CN.UTF-8 \
-    LANGUAGE=zh_CN.UTF-8 \
-    LC_CTYPE=zh_CN.UTF-8 \
+    LANGUAGE=zh_CN:zh:en_US:en \
     LC_ALL=zh_CN.UTF-8
