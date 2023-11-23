@@ -5,9 +5,9 @@ LABEL maintainer="batizhao <zhaobati@gmail.com>"
     
 RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
     sed -i s@/security.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
-    apt-get update && apt-get install -y inetutils-ping language-pack-zh-hans-base language-pack-zh-hans && \
+    apt-get update && apt-get install -y tzdata language-pack-zh-hans-base language-pack-zh-hans && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone && \
-    dpkg-reconfigure -f noninteractive locales && \
+    dpkg-reconfigure -f noninteractive locales tzdata && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV LANG=zh_CN.UTF-8 \
