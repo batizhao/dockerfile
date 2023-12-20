@@ -1,9 +1,9 @@
-FROM 172.31.10.85:5000/library/alpine
+FROM alpine
 
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
-ARG ARTHAS_VERSION="3.6.7"
-ARG JDK_VERSION="11"
+ARG ARTHAS_VERSION="3.7.1"
+ARG JDK_VERSION="17"
 ARG MIRROR=false
 
 ENV MAVEN_HOST=https://repo1.maven.org/maven2 \
