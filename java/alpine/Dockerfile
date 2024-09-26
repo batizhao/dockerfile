@@ -1,8 +1,8 @@
-FROM alpine
+FROM alpine:latest
 
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
-ARG ARTHAS_VERSION="3.7.1"
+ARG ARTHAS_VERSION="4.0.1"
 ARG JDK_VERSION="17"
 ARG MIRROR=false
 

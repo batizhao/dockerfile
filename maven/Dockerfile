@@ -1,4 +1,4 @@
-FROM 172.31.10.85:5000/library/alpine-openjdk:11
+FROM 172.31.25.221:5000/library/alpine-openjdk:11
 
 # 创建者信息
 LABEL maintainer="batizhao <zhaobati@gmail.com>"

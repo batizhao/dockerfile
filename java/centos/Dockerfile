@@ -1,4 +1,4 @@
-FROM 172.31.10.85:5000/library/centos:7
+FROM 172.31.25.221:5000/library/centos:7
 
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 

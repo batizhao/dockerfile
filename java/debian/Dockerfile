@@ -1,4 +1,4 @@
-FROM 172.31.10.85:5000/library/debian
+FROM 172.31.25.221:5000/library/debian
 
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
