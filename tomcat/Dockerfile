@@ -8,7 +8,7 @@ ENV TOMCAT_VERSION=9.0.95
 
 RUN set -ex && \
     apt-get update && \
-    apt-get install -y curl && \
+    apt-get install -y curl libapr1 libapr1-dev libtcnative-1 && \
     mkdir -p /opt && \
     curl -o /tmp/tomcat.tgz \
       https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
