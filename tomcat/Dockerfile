@@ -1,14 +1,14 @@
-FROM harbor.pecado.com:8888/ideal/alpine-openjdk:8
+FROM 172.31.25.221:5000/library/openjdk17-ubuntu22
 
 # 创建者信息
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
 # Define commonly used JAVA_HOME variable
-ENV TOMCAT_VERSION 9.0.43
+ENV TOMCAT_VERSION=9.0.95
 
 RUN set -ex && \
-    apk -U upgrade && \
-    apk add curl && \
+    apt-get update && \
+    apt-get install -y curl && \
     mkdir -p /opt && \
     curl -o /tmp/tomcat.tgz \
       https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
@@ -22,14 +22,14 @@ RUN set -ex && \
     rm -rf /opt/tomcat/webapps/examples && \
     rm -rf /opt/tomcat/webapps/docs && \
     rm -rf /opt/tomcat/webapps/ROOT && \
-    rm -rf /tmp/* /var/cache/apk/* && \
-    apk del curl
+    rm -rf /tmp/* /var/cache/apt-get/* && \
+    apt-get del curl
 
 # Add admin/admin user
 ADD tomcat-users.xml /opt/tomcat/conf/
 
-ENV CATALINA_HOME /opt/tomcat
-ENV PATH $PATH:$CATALINA_HOME/bin
+ENV CATALINA_HOME=/opt/tomcat
+ENV PATH=$PATH:$CATALINA_HOME/bin
 
 EXPOSE 8080
 WORKDIR /opt/tomcat

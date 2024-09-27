@@ -3,8 +3,8 @@ FROM ubuntu
 # 创建者信息
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
     
-RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
-    sed -i s@/security.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list && \
+RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list.d/ubuntu.sources && \
+    sed -i s@/security.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list.d/ubuntu.sources && \
     apt-get update && apt-get install -y tzdata language-pack-zh-hans-base language-pack-zh-hans && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone && \
     dpkg-reconfigure -f noninteractive locales tzdata && \
