@@ -23,7 +23,7 @@ RUN set -ex && \
     rm -rf /opt/tomcat/webapps/docs && \
     rm -rf /opt/tomcat/webapps/ROOT && \
     rm -rf /tmp/* /var/cache/apt-get/* && \
-    apt-get del curl
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Add admin/admin user
 ADD tomcat-users.xml /opt/tomcat/conf/
