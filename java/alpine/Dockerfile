@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM 172.31.25.221:5000/library/alpine
 
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
