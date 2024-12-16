@@ -4,7 +4,7 @@ FROM 172.31.25.221:5000/library/openjdk17-ubuntu22
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
 # Define commonly used JAVA_HOME variable
-ENV TOMCAT_VERSION=9.0.95
+ENV TOMCAT_VERSION=9.0.98
 
 RUN set -ex && \
     apt-get update && \
