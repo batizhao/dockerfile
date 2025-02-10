@@ -4,14 +4,14 @@ FROM 172.31.25.221:5000/library/openjdk17-ubuntu22
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
 # Define commonly used JAVA_HOME variable
-ENV TOMCAT_VERSION=10.1.34
+ENV TOMCAT_VERSION=9.0.98
 
 RUN set -ex && \
     apt-get update && \
     apt-get install -y curl libapr1 libapr1-dev libtcnative-1 && \
     mkdir -p /opt && \
     curl -o /tmp/tomcat.tgz \
-      https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-10/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
+      https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
     tar xzvf /tmp/tomcat.tgz -C /opt && \
     mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat && \
     sed -i '/Valve/s/^/<!--/g' /opt/tomcat/webapps/manager/META-INF/context.xml && \
