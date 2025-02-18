@@ -4,7 +4,7 @@ FROM 172.31.25.221:5000/library/openjdk17-ubuntu24 AS builder
 LABEL maintainer="batizhao <zhaobati@gmail.com>"
 
 # Define commonly used JAVA_HOME variable
-ENV TOMCAT_VERSION=9.0.98
+ENV TOMCAT_VERSION=9.0.100
 
 RUN set -ex && \
     apt-get update && \
@@ -34,12 +34,5 @@ ENV PATH=$PATH:$CATALINA_HOME/bin
 
 EXPOSE 8080
 WORKDIR /opt/tomcat
-
-# Launch Tomcat
-RUN groupadd -r tomcat && \
-    useradd -r -g tomcat tomcat && \
-    chown -R tomcat:tomcat /opt/tomcat
-
-USER tomcat
 
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
